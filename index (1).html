@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento-de-Estacionamento</title>
+    <link rel="stylesheet" href="estacionamento.css">
+    <link rel="stylesheet" href ="bootstrap.min.css">
+</head>
+<body onload="mostraPatio()" >
+  <div class="ajeita">
+    
+      <button class="cta" onclick="getSaldo()">
+        <span class="hover-underline-animation">SALDO</span>
+      </button>
+    <button class="cta" onclick="mostraPatio()">
+      <span class="hover-underline-animation">Estacionamento Dorta's</span>
+    </button>
+      <button class="cta" onclick="gerarRelatorio()">
+        <span class="hover-underline-animation">GERAR RELATÓRIO</span>
+    </button>
+        
+    
+  </div >
+  <div id="ajeita2">
+  <div>
+    <input id="placa" placeholder="Placa" type="text" class="input" required="">
+    <input id="nome" placeholder="Nome Proprietário" type="text" class="input" required="">
+  </div>
+  <div>
+    <input id="marca" placeholder="Marca" type="text" class="input" required="">
+    <input id="cor" placeholder="Cor" type="text" class="input" required="">
+    <div>
+      <button class="cta" style="margin-top: 40px;" onclick="estacionar()">
+      <span class="hover-underline-animation">enviar</span>
+      </button>
+</div>
+  </div></div>
+
+  <div class="row marketing">
+    <div class="col-lg-12">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th> Placa</th>
+          <th>Nome Proprietário</th>
+          <th>Cor</th>
+          <th>Marca</th>
+          <th>Entrada</th>
+          <th>Finalizar/ado</th>
+        </tr>
+      </thead>
+      <tbody id="resultados"></tbody>
+    </table>
+     </div>
+  </div>
+
+ 
+    <script src="jquery.js"></script>
+    <script src="Estacionamento.js"></script>
+    <script src="bootstrap.min.js"></script>
+</body>
+</html>
