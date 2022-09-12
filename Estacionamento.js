@@ -1,5 +1,5 @@
 function estacionar(){
-var placa = document.getElementById('placa').value;
+var placa = document.getElementById('placa').value.toUpperCase();
 var marca = document.getElementById('marca').value;
 var nome = document.getElementById('nome').value;
 var cor = document.getElementById('cor').value;
@@ -95,8 +95,12 @@ mostraPatio();
 }
 
 function salvarSaida(veiculo){
-        veiculo.horaSaida = +prompt('Digite a hora:');
-        veiculo.minSaida = +prompt('Digite os minutos:');
+       do{ veiculo.horaSaida = +prompt('Digite a hora:');}while(veiculo.horaSaida<0 || veiculo.horaSaida>23);
+        
+        do{ veiculo.minSaida = +prompt('Digite os minutos:');}while(veiculo.minSaida<0 || veiculo.minSaida>59);
+       
+
+
 
         var horaToMin = (parseInt(veiculo.hora) * 60) + parseInt(veiculo.minutos);
         
@@ -134,6 +138,7 @@ function salvarSaida(veiculo){
 
 function gerarRelatorio(){
     var carros = JSON.parse(localStorage.getItem('carrosLiberados'));
+    var carros2 = JSON.parse(localStorage.getItem('patio2'));
     var carrosResultado = document.getElementById('resultados')
 
     carrosResultado.innerHTML = '';
@@ -161,6 +166,28 @@ function gerarRelatorio(){
 
     }
 
+    for(var i = 0; i< carros2?.length; i++){
+        var marca2 = carros2[i].marcaCarro;
+        var placa2 = carros2[i].placaCarro;
+        var nome2 = carros2[i].nomeCarro;
+        var cor2 = carros2[i].corCarro;
+        var hora2 = carros2[i].hora;
+        var minutos2 = carros2[i].minutos;
+
+        carrosResultado.innerHTML += '<tr><td>' + placa2 +
+                                        '</td><td>'+  nome2 +
+                                        '</td><td>'+  cor2 +
+                                        '</td><td>'+  marca2 +
+                                        '</td><td>'+  hora2 + ' : ' + minutos2 +
+                                        '</td>' +
+                                        '</td><td>'+  ' Ainda Estacionado! ' +
+                                        '</td>' +
+                                        '</tr>';
+
+
+    }
+    
+
 }
 
 
@@ -174,5 +201,5 @@ function getSaldo(){
            soma += carros[i].saldo;
     }
 
-    alert('Saldo de:  ' + soma);
+    alert('Saldo de  ' + soma + ' Reais');
 }
